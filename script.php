@@ -114,16 +114,23 @@
 
         $end = round(microtime(true) - $start, 4);
         $time = date("H:m:s");
-        $jsonarray = array("validated" => $validated,
-                            "error" => $err,
-                        "x" => $x,
-                        "y" => $y,
-                        "r" => $z,
-                        "scripttime" => $end,
-                        "time" => $time);
 
-        echo json_encode($jsonarray);
+        $validatedstr = $validated ? 'true' : 'false';
 
+        $jsonstring = "{\"validated\":".$validatedstr.",\"error\":".$err
+            ."\"x\":".$x."\"y\":".$y."\"r\":".$z."\"scripttime\":".$end."\"time\":".$time."}";
+
+        // $jsonarray = array("validated" => $validated,
+        //                     "error" => $err,
+        //                 "x" => $x,
+        //                 "y" => $y,
+        //                 "r" => $z,
+        //                 "scripttime" => $end,
+        //                 "time" => $time);
+
+        // echo json_encode($jsonarray);
+
+        echo $jsonstring;
         // echo 'Время выполнения скрипта: '.round(microtime(true) - $start, 4).' сек.';
     }
  ?>
