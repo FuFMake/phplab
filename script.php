@@ -110,6 +110,19 @@
 
         global $x, $y, $z;
 
+        if ($x == NULL) {
+            $x = 0;
+        }
+
+        if ($y == NULL) {
+            $y = 0;
+        }
+        
+        if ($z == NULL) {
+            $z = 0;
+        }
+        
+
         global $start;
 
         $end = round(microtime(true) - $start, 4);
@@ -117,7 +130,7 @@
 
         $validatedstr = $validated ? 'true' : 'false';
 
-        $jsonstring = "{\"validated\":".$validatedstr.",\"error\":".$err
+        $jsonstring = "{\"validated\":".$validatedstr.",\"error\":"."\"$err\""
             .",\"x\":".$x.",\"y\":".$y.",\"r\":".$z.",\"scripttime\":".$end.",\"time\":".$time."}";
 
         // $jsonarray = array("validated" => $validated,
