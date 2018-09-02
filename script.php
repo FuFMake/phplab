@@ -118,7 +118,7 @@
         $validatedstr = $validated ? 'true' : 'false';
 
         $jsonstring = "{\"validated\":".$validatedstr.",\"error\":".$err
-            ."\"x\":".$x."\"y\":".$y."\"r\":".$z."\"scripttime\":".$end."\"time\":".$time."}";
+            .",\"x\":".$x.",\"y\":".$y.",\"r\":".$z.",\"scripttime\":".$end.",\"time\":".$time."}";
 
         // $jsonarray = array("validated" => $validated,
         //                     "error" => $err,
