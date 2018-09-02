@@ -345,7 +345,6 @@
                     // alert(this.responseText);
                     
                     let response = JSON.parse(this.responseText);
-
                     if (response.validated == true) {
                         validatedNode.textContent = "да";
                         errorNode.textContent = "";
@@ -355,6 +354,12 @@
                     } else {
                         validatedNode.textContent = "нет";
                         errorNode.textContent = "Ошибка: " + response.error;
+                    }
+
+                    if (response.error == "") {
+                        resultx.textContent = response.x;
+                        resulty.textContent = response.y;
+                        resultz.textContent = response.r;  
                     }
                     
                     curtime.textContent = response.time;
