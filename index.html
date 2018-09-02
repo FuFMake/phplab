@@ -1,0 +1,371 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>У меня сегодня день рождения поставьте 12 пожалуйста</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli|Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+
+        header {
+            color: #FFFFFF;
+            background-color: #455A64;
+            padding: 10px;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        #headerwrapper {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: auto;
+        }
+        
+        header span {
+            letter-spacing: 3px;
+        }
+
+        header h1 {
+            letter-spacing: 2px;
+        }
+
+        #vetements {
+            /* color:#536DFE; */
+            /* justify-content: center; */
+            display:flex;
+            align-items: center
+        }
+        
+        #vetements span {
+            color:#536DFE;
+            font-size: 2em;
+        }
+
+        #mainwrapper {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            font-family: 'Muli', sans-serif;
+            color: #212121;
+        }
+        
+        #form {
+            padding:10px;
+            width: 50%;
+            background-color: #CFD8DC;
+        }
+
+        #mainwrapper form {
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        .header {
+            font-size: 2em;
+            margin: auto;
+            padding: 10px;
+        }
+
+        #result {
+            width: 50%;
+            padding:10px;
+            background-color: #536DFE
+        }
+
+        input[type=text] {
+            width: 60%;
+            padding: 10px ;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #BDBDBD;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14pt;
+            margin-bottom: 15px;
+        }
+
+        input[type=radio] {
+            margin-top: 10px;
+            margin-right: 3px;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            margin-top: 10px;
+            width: 28%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            font-size: 14pt;
+            padding: 10px;
+            border: none;
+            display: inline-block;
+            background-color: white;
+            color: #212121;
+            transition: 0.2s;
+            margin-bottom: 15px;
+        }
+
+        .button:hover {
+            color: white;
+            background-color: #607D8B;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .button:active {
+            background-color: #455A64;
+            transition: 0.1s;
+        }
+        
+        #zvalue {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        input[type=submit] {
+            margin-top: 10px;
+            width: 28%;
+            box-sizing: border-box;
+            border-radius: 4px;
+            font-size: 14pt;
+            padding: 10px;
+            border: none;
+            display: inline-block;
+            background-color: white;
+            color: #212121;
+            transition: 0.2s;
+            margin-bottom: 15px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        #resulttable {
+            margin-top: 10px;
+            margin-left:10px;
+            width: 60%;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+
+        }
+
+        #graphic {
+            width: 80%;
+            margin: 20px auto;
+            background-color:wheat;
+            color: #212121;
+            display: flex;
+            justify-content: center;
+            font-family: 'Muli', sans-serif;
+        }
+
+        #tester {
+            width:600px;
+            height: 300px;
+            align-items: center;
+            text-align: center;
+        }
+
+    </style>
+    
+</head>
+<body onload="init()">
+    <header>
+        <div id="headerwrapper">
+                <div id="name">
+                    <h1>Роднин Роман</h1>
+                    <span>P3210 Вариант: 28014</span>
+                </div>
+                <div id="vetements">
+                    <span>VETEMENTS UNIVERSITY</span>
+                </div>
+        </div>
+    </header>
+    
+    <main>
+        <div id="mainwrapper">
+            <div id="form">
+                <span class="header">Так сказать</span>
+                <form action="">
+                    <span>Введите X:</span> <br>
+                    <input type="text" name="x" placeholder="[-5;3]" onkeyup="validateX()" id="xvalue"> <br>
+                    <span>Выберите Y:</span> <br>
+                    <input class="radioy" type="radio" name="y" value="-5" checked> -5
+                    <input class="radioy" type="radio" name="y" value="-4"> -4 
+                    <input class="radioy" type="radio" name="y" value="-3"> -3 
+                    <input class="radioy" type="radio" name="y" value="-2"> -2 
+                    <input class="radioy" type="radio" name="y" value="-1"> -1 
+                    <input class="radioy" type="radio" name="y" value="0">  0 
+                    <input class="radioy" type="radio" name="y" value="1">  1 
+                    <input class="radioy" type="radio" name="y" value="2">  2 
+                    <input class="radioy" type="radio" name="y" value="3"> 3 <br>
+                    <span>Выберите R:</span> <br>
+                    <button type="button" class="button" onclick="decZ()"><i class="fas fa-chevron-left"></i></button>
+                    <span id="zvalue">1</span>
+                    <button type="button" class="button" onclick="incZ()"><i class="fas fa-chevron-right"></i></button> <br>
+                    <span>Проверить результат</span> <br>
+                    <button type="button" class="button" value="Отправить" onclick="sendForm()">Отправить</button>
+                </form>
+            </div>
+            <div id="result">
+                <span class="header">Результат</span>
+
+                <div id="resulttable">
+                    <table>
+                        <tr>
+                            <td>
+                                X:
+                            </td>
+                            <td id="resultx">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Y:</td>
+                            <td id="resulty">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>R:</td>
+                            <td id="resultz"></td>
+                        </tr>
+                    </table>
+                     Попадание в область: <span id="validated"></span> <br>
+                     <span id="error"></span><br>
+                     Время выполнения скрипта: <span id="script"></span><br>
+                     Текущее время: <span id="curtime"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        let zvalueNode = document.getElementById("zvalue");
+        let zvalue = parseInt(zvalueNode.textContent, 10);
+
+        const MINZ = 1;
+        const MAXZ = 5;
+
+        const MINX = -5;
+        const MAXX = 3;
+        let xvalueNode = document.getElementById("xvalue");
+        
+        function init() {
+            
+        }
+
+        function validateX() {
+            let xvalue = xvalueNode.value;
+            if (xvalue == "-" || xvalue =="")
+                return;
+            if (!isNaN(xvalue)) {
+                xvalue = parseInt(xvalue, 10);
+                if ((xvalue >= MINX) && (xvalue <= MAXX)) {
+                    return;
+                }
+                if(xvalue < MINX) {
+                    xvalueNode.value = MINX;
+                } else {
+                    xvalueNode.value = MAXX;
+                }
+                return;
+            }
+            xvalueNode.value = "";
+        }
+
+        function incZ() {
+            zvalue++;
+            if (validateZ()) {
+                zvalueNode.textContent = zvalue;      
+                return;          
+            }
+            zvalue--;
+        }
+        
+        function decZ() {
+            zvalue--;
+            if (validateZ()) {
+                zvalueNode.textContent = zvalue;
+                return;            
+            }
+            zvalue++;
+        }
+
+        function validateZ() {
+            if (zvalue < MINZ || zvalue > MAXZ) {
+                return false;
+            } 
+            return true;
+        }
+
+        function sendForm() {
+            var xhttp = new XMLHttpRequest();
+
+            let y;
+            let yNodes = document.getElementsByClassName("radioy");
+
+            Array.from(yNodes).forEach(function(radioelement) {
+                if (radioelement.checked === true) {
+                    y = radioelement.value;
+                    return;
+                }
+            });
+
+            let params = "x=" + xvalueNode.value + "&" +  "z=" + zvalue + "&y=" + y; 
+            let url = "script.php";
+
+
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    const validatedNode = document.getElementById("validated");
+                    const errorNode = document.getElementById("error");
+
+                    const resultx = document.getElementById("resultx");
+                    const resulty = document.getElementById("resulty");
+                    const resultz = document.getElementById("resultz");
+
+                    const curtime = document.getElementById("curtime");
+                    const scripttime = document.getElementById("script");
+
+                    // alert(this.responseText);
+                    
+                    let response = JSON.parse(this.responseText);
+
+                    if (response.validated == true) {
+                        validatedNode.textContent = "да";
+                        errorNode.textContent = "";
+                        resultx.textContent = response.x;
+                        resulty.textContent = response.y;
+                        resultz.textContent = response.r;
+                    } else {
+                        validatedNode.textContent = "нет";
+                        errorNode.textContent = "Ошибка: " + response.error;
+                    }
+                    
+                    curtime.textContent = response.time;
+                    scripttime.textContent = response.scripttime;
+
+                    
+                }
+            };
+            xhttp.open("GET", url + "?" + params, true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>
