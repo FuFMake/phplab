@@ -3,6 +3,7 @@
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
     $validated = false;
+    $filtrated = false;
     $err = "";
     $start = microtime(true);
 
@@ -62,6 +63,8 @@
         return;
     }
 
+    $filtrated = true;
+
     if ($x < 0 && $y < 0) {
         $validated = false;
         response();
@@ -106,7 +109,7 @@
 
     function response() {
 
-        global $validated, $err;
+        global $validated, $err, $filtrated;
 
         global $x, $y, $z;
 
@@ -145,5 +148,11 @@
 
         echo $jsonstring;
         // echo 'Время выполнения скрипта: '.round(microtime(true) - $start, 4).' сек.';
-    }
+        if ($filtrated) {
+            $fd = fopen("history.json", 'a+') or die("zaebalo");
+            fwrite($fd, $jsonstring);
+            fwrite($fd, ",");
+            fclose($fd);
+        }
+       }
  ?>

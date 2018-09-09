@@ -76,14 +76,25 @@
             color:#536DFE;
             font-size: 2em;
         }
-
-        #mainwrapper {
+        
+        main {
             width: 80%;
+            margin: 0 auto;
+            font-family: 'Muli', sans-serif;
+            color: #212121;
+        }
+
+        #history {
+            background-color: white;
+            padding: 20px;
+
+        }
+        #mainwrapper {
+            width: 100%;
             margin: 20px auto;
             display: flex;
             justify-content: center;
-            font-family: 'Muli', sans-serif;
-            color: #212121;
+
         }
         
         #form {
@@ -108,6 +119,8 @@
             padding:10px;
             background-color: #536DFE
         }
+
+        
 
         input[type=text] {
             width: 60%;
@@ -281,6 +294,17 @@
                 </div>
             </div>
         </div>
+        <div id="history">
+            <!-- <table>
+                <tr>
+                    <td>8</td>
+                    <td>ты</td>
+                    <td>сука</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table> -->
+        </div>
     </main>
     </div>
 
@@ -344,6 +368,49 @@
             return true;
         }
 
+        function json2table(json) {
+
+            let headrow = "<tr> <th>X</th> <th>Y</th> <th>R</th> <th>Результат</th> <th>Время выполнения</th> <th>Время</th> </tr> ";
+            let bodyrows = "";
+            for (var i = json.length - 1; i != 0; i--) {
+                let ya = json[i];
+                let row = "<tr> <td>" + ya.x + "</td>" +
+                            "<td>" + ya.y + "</td>" +
+                            "<td>" + ya.r + "</td>" +
+                            "<td>" + ya.validated + "</td>" +
+                            "<td>" + ya.scripttime + "</td>" +
+                            "<td>" + ya.time + "</td>" +
+                            "</tr>";
+                bodyrows = bodyrows + row;
+            }
+
+            return "<table>" +
+                    "<thead>" +
+                    headrow +
+                    "</thead>" +
+                    "<tbody>" +
+                    bodyrows +
+                    "</tbody>" +
+                    "</table>";
+        }
+
+        function updateTable() {
+            var histhttp = new XMLHttpRequest();
+            histhttp.onreadystatechange = function () {
+                if(this.readyState == 4 && this.status == 200) {
+                    let jsonten = this.responseText.slice(0, -1);
+                    jsonten = "[" + jsonten + "]";
+                    let hist = JSON.parse(jsonten);
+                    document.getElementById("history").innerHTML = json2table(hist);
+
+                }
+            };
+
+            histhttp.open("GET", "history.php", true);
+            histhttp.send();
+        }
+        document.addEventListener("DOMContentLoaded", updateTable);
+
         function sendForm() {
             var xhttp = new XMLHttpRequest();
 
@@ -402,6 +469,8 @@
             };
             xhttp.open("GET", url + "?" + params, true);
             xhttp.send();
+
+            updateTable();
         }
 
         let wrapper = document.getElementById("wrapper");
